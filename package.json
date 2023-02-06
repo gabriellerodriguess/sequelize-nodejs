@@ -1,0 +1,24 @@
+{
+  "name": "teste",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "mysql2": "^3.0.1",
+    "npm": "^9.4.0",
+    "sequelize": "^5.22.5",
+    "sqlite3": "^5.1.4"
+  },
+  "type": "module",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
+}
