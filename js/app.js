@@ -17,23 +17,12 @@ const hbs = create({})
     app.use(bodyParser.json())
 //
 
-//Passando para o handlebars todos os posts gerados no banco de dados
-app.get('/', (req,res) => {
-    Post.findAll(
-        {order: [['id', 'DESC']]
-    })
-    .then((posts) => {    
-        console.log(posts)    
-        res.render('home', {posts: posts})
-    })
-})
-
 //Rota para exibir o formulário criado pelo Handlebars
 app.get('/cadastro', (req,res) => {
     res.render('form')
 })
 
-//Rota que cria os registros no banco de dados, passando como parâmetro os dados recebidos na requisição
+//Rota definida no action do form, cria os registros no banco de dados a partir dos parâmetro os dados recebidos na requisição
 app.post('/insert', (req,res) => { 
     Post.create({
         title: req.body.title,
@@ -47,6 +36,17 @@ app.post('/insert', (req,res) => {
     })
 })
 
+//Passando para o handlebars todos os posts gerados no banco de dados
+app.get('/', (req,res) => {
+    Post.findAll(
+        {order: [['id', 'DESC']]
+    })
+    .then((posts) => {    
+        console.log(posts)    
+        res.render('home', {posts: posts})
+    })
+})
+
 //Rota para deletar os registros tanto do front quanto do banco de dados, aqui passamos um parâmetro obrigatório
 //para a rota, e usamos o método destroy quando o parâmetro id for igual ao id do registro.
 app.get('/deletes:id', (req,res) => {
@@ -55,7 +55,7 @@ app.get('/deletes:id', (req,res) => {
         res.send('Post deletado com sucesso.')
     })
     .catch(error => {
-        ('Essa postagem não existe.')
+        res.send('Essa postagem não existe.')
     })
 })
 
