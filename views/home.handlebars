@@ -1,0 +1,8 @@
+<h1>Home</h1>
+{{#each posts}}
+  <small>{{dataValues.createdAt}}</small>
+  <h2> {{dataValues.title}} </h2>
+  <p> {{dataValues.content}} </p>
+  <a href="/deletes{{dataValues.id}}">Delete</a>
+  <hr>
+{{/each}}
